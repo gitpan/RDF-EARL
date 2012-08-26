@@ -44,7 +44,7 @@ dies_ok(sub {
 	<http://www.w3.org/ns/earl#assertedBy> <http://example.org/harness> ;
 	<http://www.w3.org/ns/earl#result> [
 		<http://www.w3.org/ns/earl#outcome> <http://www.w3.org/ns/earl#passed> ;
-		<http://www.w3.org/2000/01/rdf-schema#comment> "comment" ;
+		<http://www.w3.org/ns/earl#info> "comment" ;
 		a <http://www.w3.org/ns/earl#TestResult> ;
 	] ;
 	<http://www.w3.org/ns/earl#subject> <http://example.org/testing> ;
@@ -64,7 +64,7 @@ END
 	<http://www.w3.org/ns/earl#assertedBy> <http://example.org/harness> ;
 	<http://www.w3.org/ns/earl#result> [
 		<http://www.w3.org/ns/earl#outcome> <http://www.w3.org/ns/earl#passed> ;
-		<http://www.w3.org/2000/01/rdf-schema#comment> "passed!" ;
+		<http://www.w3.org/ns/earl#info> "passed!" ;
 		a <http://www.w3.org/ns/earl#TestResult> ;
 	] ;
 	<http://www.w3.org/ns/earl#subject> <http://example.org/testing> ;
@@ -75,7 +75,7 @@ END
 	<http://www.w3.org/ns/earl#assertedBy> <http://example.org/harness> ;
 	<http://www.w3.org/ns/earl#result> [
 		<http://www.w3.org/ns/earl#outcome> <http://www.w3.org/ns/earl#failed> ;
-		<http://www.w3.org/2000/01/rdf-schema#comment> "failed!" ;
+		<http://www.w3.org/ns/earl#info> "failed!" ;
 		a <http://www.w3.org/ns/earl#TestResult> ;
 	] ;
 	<http://www.w3.org/ns/earl#subject> <http://example.org/testing> ;

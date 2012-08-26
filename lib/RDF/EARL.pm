@@ -4,7 +4,7 @@ RDF::EARL - Generate W3C Evaluation and Report Language (EARL) test reports.
 
 =head1 VERSION
 
-This document describes RDF::EARL version 0.000_01.
+This document describes RDF::EARL version 0.001.
 
 =head1 SYNOPSIS
 
@@ -41,15 +41,16 @@ as a string in the Turtle RDF format.
 
 package RDF::EARL;
 
-use strict;
+use v5.14;
 use warnings;
+use feature qw(unicode_strings);
 use RDF::Trine qw(iri blank literal statement);
 use RDF::Trine::Namespace qw(foaf rdf rdfs dc_terms xsd);
 use Scalar::Util qw(blessed);
 
 our ($VERSION);
 BEGIN {
-	$VERSION	= '0.000_01';
+	$VERSION	= '0.001';
 }
 
 my $DOAP	= RDF::Trine::Namespace->new('http://usefulinc.com/ns/doap#');
@@ -75,8 +76,7 @@ sub new {
 		%args	= @_;
 	}
 	my $subj	= $args{ subject } or die "RDF::EARL->new called without a subject IRI";
-	my $vers	= $VERSION;
-	$vers		=~ s/[.]/-/g;
+	my $vers	= $VERSION =~ s/[.]/-/gr;
 	my $asrt	= $args{ assertor } || "http://purl.org/NET/cpan-uri/dist/RDF-EARL/v_${vers}";
 	
 	foreach ($subj, $asrt) {
@@ -157,7 +157,7 @@ sub _assert {
 	$model->add_statement( statement($r, $EARL->outcome, $result) );
 	foreach my $c (@comment) {
 		my $l	= blessed($c) ? $c : literal($c);
-		$model->add_statement( statement($r, $rdfs->comment, $l) );
+		$model->add_statement( statement($r, $EARL->info, $l) );
 	}
 	return $a;
 }
@@ -166,7 +166,7 @@ sub _assert {
 
 Asserts that the test identifed by the C<< $test >> IRI was passed by the subject
 system. If there are any C<< @comments >> specified, they are asserted as
-rdfs:comment statements on the respective earl:TestResult node in the result
+earl:info statements on the respective earl:TestResult node in the result
 model.
 Returns the RDF::Trine::Node object corresponding to the just-made assertion.
 
@@ -182,7 +182,7 @@ sub pass {
 
 Asserts that the test identifed by the C<< $test >> IRI was failed by the subject
 system. If there are any C<< @comments >> specified, they are asserted as
-rdfs:comment statements on the respective earl:TestResult node in the result
+earl:info statements on the respective earl:TestResult node in the result
 model.
 Returns the RDF::Trine::Node object corresponding to the just-made assertion.
 
@@ -198,7 +198,7 @@ sub fail {
 
 Asserts that it is unclear if the subject passed or failed the test identifed
 by the C<< $test >> IRI. If there are any C<< @comments >> specified, they are
-asserted as rdfs:comment statements on the respective earl:TestResult node in
+asserted as earl:info statements on the respective earl:TestResult node in
 the result model.
 Returns the RDF::Trine::Node object corresponding to the just-made assertion.
 
@@ -214,7 +214,7 @@ sub cantTell {
 
 Asserts that the test identifed by the C<< $test >> IRI is not applicable to the
 subject system. If there are any C<< @comments >> specified, they are asserted as
-rdfs:comment statements on the respective earl:TestResult node in the result
+earl:info statements on the respective earl:TestResult node in the result
 model.
 Returns the RDF::Trine::Node object corresponding to the just-made assertion.
 
@@ -230,7 +230,7 @@ sub inapplicable {
 
 Asserts that the test identifed by the C<< $test >> IRI was not tested by the
 subject system. If there are any C<< @comments >> specified, they are asserted as
-rdfs:comment statements on the respective earl:untested node in the result
+earl:info statements on the respective earl:untested node in the result
 model.
 Returns the RDF::Trine::Node object corresponding to the just-made assertion.
 

@@ -4,7 +4,7 @@ RDF::EARL - Generate W3C EARL test reports.
 
 REQUIREMENTS
 
-	To install RDF::EARL you'll need the following perl modules installed:
+    To install RDF::EARL you'll need the following perl modules installed:
 
      * RDF::Trine
      * Scalar::Util
@@ -20,7 +20,7 @@ INSTALLATION
 
 VERSION HISTORY
 
-  Version 0.001 (2012-08-XX)
+  Version 0.001 (2012-08-26)
 
      * First release.
 
@@ -31,5 +31,5 @@ COPYRIGHT
 
 AUTHOR
 
-	Gregory Todd Williams <gwilliams@cpan.org>
+    Gregory Todd Williams <gwilliams@cpan.org>
 

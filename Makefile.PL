@@ -14,7 +14,7 @@ build_requires		'Test::Exception'			=> 0;
 perl_version		'5.008003';
 
 requires			'Scalar::Util'				=> 0;
-requires			'RDF::Trine'				=> 0;
+requires			'RDF::Trine'				=> 1.0;
 
 resources(
 	'homepage'   => "http://search.cpan.org/dist/RDF-EARL/",

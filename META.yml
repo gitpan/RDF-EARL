@@ -22,7 +22,7 @@ no_index:
     - t
     - xt
 requires:
-  RDF::Trine: 0
+  RDF::Trine: 1
   Scalar::Util: 0
   perl: 5.8.3
 resources:
@@ -30,4 +30,4 @@ resources:
   homepage: http://search.cpan.org/dist/RDF-EARL/
   license: http://dev.perl.org/licenses/
   repository: http://github.com/kasei/perlrdf/
-version: 0.000_01
+version: 0.001
